@@ -1,152 +1,83 @@
-from flask import jsonify, make_response
-from flask_restful import Resource, reqparse
+from flask import Flask
+from flask_restful import Api, Resource, reqparse
 
-# Sales Endpoints
-
-sales = [
-                {
-					 "salesid": 1,
-					 "productname" : "Samsung 8",
-					 "clientname":"Martin Muriuki",
-					 "phonenumber":"0722333456",
-					 "quantity": 1,
-					 "price": 80000,
-				},
-                {
-					 "salesid": 2,
-					 "productname" : "Samsung 9",
-					 "clientname":"Peris Ndanu",
-					 "phonenumber":"0711234554",
-					 "quantity": 1,
-					 "price":90000,
-				},
-		]
+orders = []
 
 
-class SalesList(Resource):
+class OrderList(Resource):
     def get(self):
-        return make_response(jsonify(
-            {
-                'status':"OK",
-                'Message':"success",
-                'My Sales': sales
-            }),200)
+        return orders, 200
 
 
-class Sales(Resource):
-
-    def get(self, salesid):
-        for sale in sales:
-            if salesid == sale["salesid"]:
-                return make_response(jsonify(
-                    {
-                        'status':"OK",
-                        'Message':"success",
-                        'My Sale': sale
-                    }),200)
+class Order(Resource):
+    def get(self, orderid):
+        for order in orders:
+            if (orderid == order["orderid"]):
+                return order, 200
             return "User not found", 404
 
-    def post(self, salesid):
+    def post(self, orderid):
         parser = reqparse.RequestParser()
-        parser.add_argument("productname")
+        parser.add_argument("food")
         parser.add_argument("clientname")
-        parser.add_argument("phonenumber")
+        parser.add_argument("location")
+        parser.add_argument("phone")
         parser.add_argument("quantity")
         parser.add_argument("price")
+        parser.add_argument("orderstat")
         args = parser.parse_args()
 
+        for order in orders:
+            if (orderid == order["orderid"]):
+                return "order with ID number {} already exists".format(orderid), 400
 
-        for sale in sales:
-            if salesid == sale["salesid"]:
-                return "order with ID number {} already exists".format(salesid), 400
-
-        sale = {
-            "salesid": salesid,
-            "productname": args["productname"],
+        order = {
+            "orderid": orderid,
+            "food": args["food"],
             "clientname": args["clientname"],
-            "phonenumber": args["phonenumber"],
+            "location": args["location"],
+            "phone": args["phone"],
             "quantity": args["quantity"],
             "price": args["price"],
-
+            "orderstat": args["orderstat"],
 
         }
-        sales.append(sale)
-        return make_response(jsonify(
-            {
-                'status':"OK",
-                'Message':"Posted successfully",
-                'My Sale': sale
-            }),201)
+        orders.append(order)
+        return order, 201
 
-
-# Product Endpoint
-
-products = [
-				{
-					 "productid": 1,
-					 "productname" : "Samsung S9",
-					 "phonenumber":"0722123456",
-					 "quantity": 15,
-					 "price": 90000,
-					 "status":"Product Available",
-				},
-				{
-					 "productid": 2,
-					 "productname" : "Samsung S8",
-					 "phone":"0722123456",
-					 "quantity": 1,
-					 "price": 80000,
-					 "status":"pending",
-				},
-			]
-
-
-class ProductList(Resource):
-    def get(self):
-        return make_response(jsonify(
-            {
-                'status':"OK",
-                'Message':"success",
-                'My Products': products
-            }),200)
-
-
-class Product(Resource):
-    def get(self, productid):
-        for product in products:
-            if productid == product["productid"]:
-                return make_response(jsonify(
-                    {
-                        'status':"OK",
-                        'Message':"success",
-                        'My Products': products
-                    }),200)
-            return "User not found", 404
-
-    def post(self, productid):
+    def put(self, orderid):
         parser = reqparse.RequestParser()
-        parser.add_argument("productname")
+        parser.add_argument("food")
+        parser.add_argument("clientname")
+        parser.add_argument("location")
+        parser.add_argument("phone")
         parser.add_argument("quantity")
         parser.add_argument("price")
-        parser.add_argument("status")
+        parser.add_argument("orderstat")
         args = parser.parse_args()
 
-        for product in products:
-            if productid == product["productid"]:
-                return "product with ID number {} already exists".format(productid), 400
+        for order in orders:
+            if (orderid == order["orderid"]):
+                order["food"] = args["food"]
+                order["clientname"] = args["clientname"]
+                order["location"] = args["location"]
+                order["phone"] = args["phone"]
+                order["quantity"] = args["quantity"]
+                order["price"] = args["price"]
+                order["orderstat"] = args["orderstat"]
+                return order, 200
 
-        product = {
-            "productid": productid,
-            "productname": args["productname"],
+        order = {
+            "orderid": orderid,
+            "food": args["food"],
+            "clientname": args["clientname"],
+            "location": args["location"],
+            "phone": args["phone"],
             "quantity": args["quantity"],
             "price": args["price"],
-            "status": args["status"],
+            "orderstat": args["orderstat"],
 
         }
-        products.append(product)
-        return make_response(jsonify(
-            {
-                'status':"OK",
-                'Message':"Posted successfully",
-                'My Product': product
-            }),201)
+
+        orders.append(order)
+        return order, 201
