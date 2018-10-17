@@ -2,7 +2,24 @@ from flask_restful import Resource, reqparse
 
 # Sales Endpoints
 
-sales = []
+sales = [
+                {
+					 "salesid": 1,
+					 "productname" : "Samsung 8",
+					 "clientname":"Martin Muriuki",
+					 "phonenumber":"0722333456",
+					 "quantity": 1,
+					 "price":Ksh.80000,
+				},
+                {
+					 "salesid": 2,
+					 "productname" : "Samsung 9",
+					 "clientname":"Peris Ndanu",
+					 "phonenumber":"0711234554",
+					 "quantity": 1,
+					 "price":Ksh.90000,
+				},
+		]
 
 
 class SalesList(Resource):
@@ -76,7 +93,24 @@ class Sales(Resource):
 
 # Product Endpoint
 
-products = []
+products = [
+				{
+					 "productid": 1,
+					 "productname" : "Samsung S9",
+					 "phonenumber":"0722123456",
+					 "quantity": 15,
+					 "price": 90000,
+					 "status":"Product Available",
+				},
+				{
+					 "productid": 2,
+					 "productname" : "Samsung S8",
+					 "phone":"0722123456",
+					 "quantity": 1,
+					 "price": 80000,
+					 "status":"pending",
+				},
+			]
 
 
 class ProductList(Resource):
@@ -94,8 +128,6 @@ class Product(Resource):
     def post(self, productid):
         parser = reqparse.RequestParser()
         parser.add_argument("productname")
-        parser.add_argument("clientname")
-        parser.add_argument("phonenumber")
         parser.add_argument("quantity")
         parser.add_argument("price")
         parser.add_argument("status")
@@ -108,8 +140,6 @@ class Product(Resource):
         product = {
             "productid": productid,
             "productname": args["productname"],
-            "clientname": args["clientname"],
-            "phonenumber": args["phonenumber"],
             "quantity": args["quantity"],
             "price": args["price"],
             "status": args["status"],
@@ -121,8 +151,6 @@ class Product(Resource):
     def put(self, productid):
         parser = reqparse.RequestParser()
         parser.add_argument("productname")
-        parser.add_argument("clientname")
-        parser.add_argument("phonenumber")
         parser.add_argument("quantity")
         parser.add_argument("price")
         parser.add_argument("status")
@@ -131,8 +159,6 @@ class Product(Resource):
         for product in products:
             if productid == product["productid"]:
                 product["productname"] = args["productname"]
-                product["clientname"] = args["clientname"]
-                product["phonenumber"] = args["phonenumber"]
                 product["quantity"] = args["quantity"]
                 product["price"] = args["price"]
                 product["status"] = args["status"]
@@ -141,8 +167,6 @@ class Product(Resource):
         product = {
             "productid": productid,
             "productname": args["productname"],
-            "clientname": args["clientname"],
-            "phonenumber": args["phonenumber"],
             "quantity": args["quantity"],
             "price": args["price"],
             "status": args["status"],
