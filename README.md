@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/muthigani/STORE-MANAGER-API.svg?branch=master)](https://travis-ci.org/muthigani/STORE-MANAGER-API)
+
 ## STORE-MANAGER-API :book:
 * 	Admin can add a product
 * 	Admin/store attendant can get all products
