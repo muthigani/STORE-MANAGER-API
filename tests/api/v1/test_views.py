@@ -1,7 +1,7 @@
 import unittest
 from flask import Flask, json
 
-from tests.api.v1.views import Sales,SalesList
+
 
 app = Flask(__name__)
 
@@ -30,21 +30,21 @@ class TestingEndpoints(unittest.TestCase):
         self.assertRaises(TypeError, response)
 
 
-    def test_nonexistant_orderid(self):
-        """Test check none existing orderid """
+    def test_nonexistant_saleid(self):
+        """Test check none existing saleid """
         response = self.app.get('/api/v1/sales/20', content_type="application/json")
         self.assertEqual(response.status_code,404)
    
     
     def test_error_when_string_is_notpassed(self):
-        """Test whether food  parameter is a string"""
+        """Test whether productname  parameter is a string"""
         response = self.app.post('/api/v1/sales',data = json.dumps({"productname": 7}),
                                 content_type="application/json", follow_redirects=True)
         self.assertRaises(TypeError, response)
     
 
     def test_mandatory_parameter_missing_in_placed_order(self):
-        """Test if mandatory parameter food is not passed"""
+        """Test if mandatory parameter productname is not passed"""
         response = self.app.post('/api/v1/sales',data = json.dumps({"productname": "Techno Product"}),
                                 content_type="application/json", follow_redirects=True)
         self.assertEqual(response.status_code,404)
