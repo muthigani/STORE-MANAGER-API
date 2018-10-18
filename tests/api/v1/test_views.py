@@ -1,7 +1,7 @@
 import unittest
-from flask import Flask,json,jsonify,request
+from flask import Flask, json
 
-from app.api.v1.views import Sales,SalesList
+from views import Sales,SalesList
 
 app = Flask(__name__)
 
@@ -38,14 +38,14 @@ class TestingEndpoints(unittest.TestCase):
     
     def test_error_when_string_is_notpassed(self):
         """Test whether food  parameter is a string"""
-        response = self.app.post('/api/v1/sales',data = json.dumps({"food": 7}),
+        response = self.app.post('/api/v1/sales',data = json.dumps({"productname": 7}),
                                 content_type="application/json", follow_redirects=True)
         self.assertRaises(TypeError, response)
     
 
     def test_mandatory_parameter_missing_in_placed_order(self):
         """Test if mandatory parameter food is not passed"""
-        response = self.app.post('/api/v1/sales',data = json.dumps({"Description": "Tasty food"}),
+        response = self.app.post('/api/v1/sales',data = json.dumps({"productname": "Techno Product"}),
                                 content_type="application/json", follow_redirects=True)
         self.assertEqual(response.status_code,404)
 
