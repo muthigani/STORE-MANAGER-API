@@ -1,7 +1,7 @@
 import unittest
 from flask import Flask,json,jsonify,request
 
-#from app.api.v1.views import Sales,SalesList
+from app.api.v1.views import Sales,SalesList
 
 app = Flask(__name__)
 
