@@ -19,12 +19,15 @@ The application should have following endpoints:
 | GET /sales/<salesId>  | Fetch a single sale record  |
 | POST /products  | Create a product  |
 | POST /sales  | Create a sale order  |
-
+| POST /authorization/login  | login user  |
+| POST /authorization/register  | register user  |
   
-## Installations
+## Installation
 * OS -Windows 10
 * Gitbash
 * Postman
+* Python 3.7
+* Vscode
   
 ## How to setup Locally
 * install on virtual env:
@@ -39,8 +42,14 @@ pip install flask
 ```sh
 pip install flask-restful
 ```
-
+* install flask_jwt_extended :
+```sh
+pip install flask_jwt_extended
+```
 ## Heroku Links
 * Welcome Page: https://store-manager-api-1987.herokuapp.com
+* Login Page: https://store-manager-api-1987.herokuapp.com/api/v1/authorization/login
+* Registration Page: https://store-manager-api-1987.herokuapp.com/api/v1/authorization/register
 * Sales Page: https://store-manager-api-1987.herokuapp.com/api/v1/sales
 * Products Page: https://store-manager-api-1987.herokuapp.com/api/v1/products
+
