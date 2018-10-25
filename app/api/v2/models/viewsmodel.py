@@ -1,9 +1,12 @@
 import psycopg2
 import os
 
+DATABASE_URL = os.environ['DATABASE_URL']
+
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 #db_url = os.getenv('DATABASE_URL')
 #conn = psycopg2.connect(db_url)
-conn = psycopg2.connect("dbname='storemanager' host='127.0.0.1' port='5432' user='postgres' password='admin'")
+#conn = psycopg2.connect("dbname='storemanager' host='127.0.0.1' port='5432' user='postgres' password='admin'")
 cur = conn.cursor()
 cur.execute('''CREATE TABLE IF NOT EXISTS users (
     userid serial PRIMARY KEY,
