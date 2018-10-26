@@ -2,6 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/8b5a690623d9460a6aee/maintainability)](https://codeclimate.com/github/muthigani/STORE-MANAGER-API/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/muthigani/STORE-MANAGER-API/badge.svg?branch=develop)](https://coveralls.io/github/muthigani/STORE-MANAGER-API?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/79294dbf042743028d3ff25aee134927)](https://www.codacy.com/app/muthigani/STORE-MANAGER-API?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=muthigani/STORE-MANAGER-API&amp;utm_campaign=Badge_Grade)
+
 ## STORE-MANAGER-API :book:
 * 	Admin can add a product
 * 	Admin/store attendant can get all products
@@ -46,6 +47,8 @@ pip install flask-restful
 ```sh
 pip install flask_jwt_extended
 ```
+## Documentation
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/9d0de1946901aa5b8d3d)
 ## Heroku Links
 * Welcome Page: https://store-manager-api-1987.herokuapp.com
 * Login Page: https://store-manager-api-1987.herokuapp.com/api/v1/auth/login
