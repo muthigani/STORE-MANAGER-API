@@ -1,8 +1,6 @@
-from flask import Flask, jsonify
-from flask_restful import Api
+from flask import Flask
 from flask_jwt_extended import JWTManager
 from instance.config import app_config
-# from app.api.v1.views.users import BLACKLIST
 
 
 def create_app():

@@ -1,5 +1,5 @@
 from flask import Flask, abort, request, make_response, jsonify, Blueprint
-from flask_restful import Resource, Api
+from flask_restful import Resource
 from flask_jwt_extended import (JWTManager, jwt_required, get_jwt_claims)
 
 
@@ -10,12 +10,14 @@ sales = []
 
 
 class SalesList(Resource):
+
     @jwt_required
     def get(self):
         """
             Obtain  sales
         """
         return jsonify({
+            'status': 'OK',
             'SalesList': sales
         })
     @jwt_required
@@ -24,7 +26,7 @@ class SalesList(Resource):
         data = request.get_json()
 
         # users data entered, stored in variables
-        sales_id = len(sales)
+        salesid = len(sales)+1
         category = data['category']
         sale_name = data['product_name']
         quantity = data['quantity']
@@ -34,7 +36,7 @@ class SalesList(Resource):
 
         # store products in a dictionary
         sale = {
-            "salesId": sales_id,
+            "salesid": salesid,
             "category": category,
             "product_name": sale_name,
             "quantity": quantity,
@@ -55,10 +57,15 @@ class Sale(Resource):
             param : Store Owner/admin and store attendant of the specific sales record
         """
         for sale in sales:
-            if sale['salesid'] == salesid:
-                return jsonify({"response": sale})
-
-        return jsonify({"response": "Product Not Available"})
+            if int(sale["salesid"]) == int(salesid):
+                return make_response(jsonify(
+            {
+                'status': 'OK',
+                'My sale':sale
+            }
+            ),200)
+        else:
+            return jsonify({"response": "Sale Not Available"})
 
 
 
@@ -73,6 +80,7 @@ class ProductsList(Resource):
         """
         return make_response(jsonify(
             {
+                'status': 'OK',
                 'ProductsList':products
             }
         ),200)
@@ -85,7 +93,7 @@ class ProductsList(Resource):
         data = request.get_json()
         if not data:
             return jsonify({"response": "Fields cannot be empty"}) 
-        productid = len(products)
+        productid = len(products)+1
         productname = data['productname']
         quantity = data['quantity']
         price = data['price']
@@ -93,8 +101,8 @@ class ProductsList(Resource):
         # dictionary data structure for users products
         product = {
             "productid":productid,
+            "productname": productname,
             "quantity":quantity,
-            "productname":productname,
             "price":price,
         }
         # Store products obtained from the user in a list
@@ -104,17 +112,17 @@ class ProductsList(Resource):
         return jsonify( {'response':'New product added successfully'})
     
 class Product(Resource):
-    ''' fetch a single product '''
+    ''' get a single product '''
     @jwt_required
     def get(self, productid):
         """Get a single product record"""
         for product in products:
-            if product['productid'] == productid:
-                return jsonify(
-                    {
-                        'response':product
-                    }
-                )
-        return jsonify({'response':'Product Not Available'})
-
-            
+            if int(product["productid"]) == int(productid):
+                return make_response(jsonify(
+            {
+                'status': 'OK',
+                'My product':product
+            }
+            ),200)
+        else:
+            return jsonify({"response": "Product Not Available"})

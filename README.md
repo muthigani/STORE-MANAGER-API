@@ -19,8 +19,8 @@ The application should have following endpoints:
 | GET /sales/<salesId>  | Fetch a single sale record  |
 | POST /products  | Create a product  |
 | POST /sales  | Create a sale order  |
-| POST /authorization/login  | login user  |
-| POST /authorization/register  | register user  |
+| POST /auth/login  | login user  |
+| POST /auth/signup  | register user  |
   
 ## Installation
 * OS -Windows 10
