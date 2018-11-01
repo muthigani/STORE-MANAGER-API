@@ -14,7 +14,7 @@ class Users():
         if username in users:
             return {"message":"Username already exists"}
         
-        self.user["name"] = name
+        self.user["fullname"] = name
         self.user["email"] = email
         self.user["username"] = username
         self.user["role"] = role

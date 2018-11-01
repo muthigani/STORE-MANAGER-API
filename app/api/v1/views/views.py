@@ -25,7 +25,7 @@ class SalesList(Resource):
         # users data entered, stored in variables
         sales_id = len(sales)
         category = data['category']
-        productname = data['productname']
+        productname = data['fullname']
         quantity = data['quantity']
         price = data['price']
 
@@ -35,7 +35,7 @@ class SalesList(Resource):
         sale = {
             "salesId": sales_id,
             "category": category,
-            "productname": productname,
+            "fullname": productname,
             "quantity": quantity,
             "price": price
         }
@@ -85,14 +85,14 @@ class ProductsList(Resource):
         if not data:
             return jsonify({"response": "Fields cannot be empty"}) 
         productid = len(products)
-        productname = data['productname']
+        productname = data['fullname']
         quantity = data['quantity']
         price = data['price']
 
         # data structure for users product
         product = {
             "productid": productid,
-            "productname": productname,
+            "fullname": productname,
             "quantity": quantity,
             "price":price,
         }

@@ -23,8 +23,8 @@ class TestingEndpoints(unittest.TestCase):
 
     def test_error_id(self):
         """Test to check error in specific order """ 
-        orderid = "1"
-        api_url = '/api/v1/ordersss/'+ orderid
+        salesid = "20"
+        api_url = '/api/v1/sales/'+ orderid
         response = self.app.get(api_url)
         self.assertRaises(TypeError, response)
 
@@ -36,15 +36,15 @@ class TestingEndpoints(unittest.TestCase):
    
     
     def test_error_when_string_is_notpassed(self):
-        """Test whether productname  parameter is a string"""
-        response = self.app.post('/api/v1/sales',data = json.dumps({"productname": 7}),
+        """Test whether name  parameter is a string"""
+        response = self.app.post('/api/v1/sales',data = json.dumps({"name": 7}),
                                 content_type="application/json", follow_redirects=True)
         self.assertRaises(TypeError, response)
     
 
     def test_mandatory_parameter_missing_in_placed_order(self):
-        """Test if mandatory parameter productname is not passed"""
-        response = self.app.post('/api/v1/sales',data = json.dumps({"productname": "Techno Product"}),
+        """Test if mandatory parameter name is not passed"""
+        response = self.app.post('/api/v1/sales',data = json.dumps({"name": "Techno Product"}),
                                 content_type="application/json", follow_redirects=True)
         self.assertEqual(response.status_code,404)
 
@@ -74,15 +74,15 @@ class TestingEndpoints(unittest.TestCase):
    
     
     def test_error_when_product_is_notpassed(self):
-        """Test whether productname  parameter is a string"""
-        response = self.app.post('/api/v1/products',data = json.dumps({"productname": 17}),
+        """Test whether name  parameter is a string"""
+        response = self.app.post('/api/v1/products',data = json.dumps({"name": 17}),
                                 content_type="application/json", follow_redirects=True)
         self.assertRaises(TypeError, response)
     
 
     def test_parameter_missing_in_placed_product(self):
-        """Test if mandatory parameter productname is not passed"""
-        response = self.app.post('/api/v1/products',data = json.dumps({"productname": "Samsung S8"}),
+        """Test if mandatory parameter name is not passed"""
+        response = self.app.post('/api/v1/products',data = json.dumps({"name": "Samsung S8"}),
                                 content_type="application/json", follow_redirects=True)
         self.assertEqual(response.status_code,404)
 

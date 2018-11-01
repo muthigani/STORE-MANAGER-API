@@ -9,4 +9,4 @@ def index():
     return "<h1> Welcome to Store Manager Application</h1>"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+   app.run(debug=True)
