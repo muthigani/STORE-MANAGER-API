@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/muthigani/STORE-MANAGER-API.svg?branch=challenge-3)](https://travis-ci.org/muthigani/STORE-MANAGER-API)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8b5a690623d9460a6aee/maintainability)](https://codeclimate.com/github/muthigani/STORE-MANAGER-API/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/muthigani/STORE-MANAGER-API/badge.svg?branch=develop)](https://coveralls.io/github/muthigani/STORE-MANAGER-API?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/muthigani/STORE-MANAGER-API/badge.svg?branch=challenge-3)](https://coveralls.io/github/muthigani/STORE-MANAGER-API?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/79294dbf042743028d3ff25aee134927)](https://www.codacy.com/app/muthigani/STORE-MANAGER-API?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=muthigani/STORE-MANAGER-API&amp;utm_campaign=Badge_Grade)
 ## STORE-MANAGER-API :book:
 * 	Admin can add a product
