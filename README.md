@@ -50,6 +50,5 @@ pip install flask_jwt_extended
 * Welcome Page: http://store-manager-1987-ch3.herokuapp.com/
 * Login Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/auth/login
 * Registration Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/auth/signup
-* Sales Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/sales
 * Products Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/products
 
