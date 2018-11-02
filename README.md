@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/muthigani/STORE-MANAGER-API.svg?branch=develop)](https://travis-ci.org/muthigani/STORE-MANAGER-API)
+[![Build Status](https://travis-ci.org/muthigani/STORE-MANAGER-API.svg?branch=challenge-3)](https://travis-ci.org/muthigani/STORE-MANAGER-API)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8b5a690623d9460a6aee/maintainability)](https://codeclimate.com/github/muthigani/STORE-MANAGER-API/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/muthigani/STORE-MANAGER-API/badge.svg?branch=develop)](https://coveralls.io/github/muthigani/STORE-MANAGER-API?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/79294dbf042743028d3ff25aee134927)](https://www.codacy.com/app/muthigani/STORE-MANAGER-API?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=muthigani/STORE-MANAGER-API&amp;utm_campaign=Badge_Grade)
@@ -47,9 +47,9 @@ pip install flask-restful
 pip install flask_jwt_extended
 ```
 ## Heroku Links
-* Welcome Page: https://store-manager-api-1987.herokuapp.com
-* Login Page: https://store-manager-api-1987.herokuapp.com/api/v1/auth/login
-* Registration Page: https://store-manager-api-1987.herokuapp.com/api/v1/auth/signup
-* Sales Page: https://store-manager-api-1987.herokuapp.com/api/v1/sales
-* Products Page: https://store-manager-api-1987.herokuapp.com/api/v1/products
+* Welcome Page: http://store-manager-1987-ch3.herokuapp.com/
+* Login Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/auth/login
+* Registration Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/auth/signup
+* Sales Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/sales
+* Products Page: http://store-manager-1987-ch3.herokuapp.com/api/v2/products
 
